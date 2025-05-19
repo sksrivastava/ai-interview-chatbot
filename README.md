@@ -1,4 +1,4 @@
-# ai-interview-chatbot
+# AI-interview-chatbot
 An AI interviewer that conducts interviews based on a user's resume, responses and job description, then generates feedback on their performance.
 
 ## Features
@@ -137,10 +137,7 @@ ai-interview-chatbot/
 *   **AI:** OpenRouter.ai (or any compatible LLM provider)
 *   **Database:** Supabase (PostgreSQL)
 
-## Future Enhancements (Ideas)
+## Demo
 
-*   More sophisticated AI question generation and adaptability.
-*   User accounts and interview history.
-*   Different interview types/modes.
-*   Customizable AI interviewer personas.
-*   More detailed feedback analytics.
+Use the link below to see the demo of the application: https://www.awesomescreenshot.com/video/39986876?key=bf31f2e05782a4b6708bf2ba4ba27d2c
+
