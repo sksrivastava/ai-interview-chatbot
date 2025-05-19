@@ -1,0 +1,390 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f7f6; /* Light gray background */
+  color: #333; /* Dark gray text */
+
+  display: flex; /* Make body a flex container */
+  justify-content: center; /* Center .App horizontally */
+  align-items: flex-start; /* Align .App to the top of the viewport */
+  min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+.App {
+  /* text-align: center; */ /* No longer strictly needed for centering main blocks */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Continues to center children if they are narrower than .App's content box */
+
+  width: 100%; /* Ensures .App tries to fill available width up to its max-width */
+  max-width: 940px; /* Max width for the entire .App container */
+  margin-left: auto; /* Centers .App in its parent (body) if body is not flex, or complements flex centering */
+  margin-right: auto; /* Centers .App in its parent (body) if body is not flex, or complements flex centering */
+
+  /* min-height: 100vh; */ /* Removed as body handles viewport height and .App takes content height */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.App-header {
+  background-color: #2c3e50; /* Dark blue-gray header */
+  padding: 20px;
+  color: white;
+  width: 100%;
+  max-width: 900px; /* Max width for the header content */
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+.tts-toggle {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.tts-toggle label {
+  margin-right: 8px;
+}
+
+.App-main {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px; /* Consistent max width */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between sections */
+}
+
+.setup-section, .interview-section, .feedback-section {
+  border: 1px solid #e0e0e0; /* Lighter border for sections */
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fdfdfd; /* Slightly off-white for sections */
+}
+
+.setup-section h2, .interview-section h2, .feedback-section h3 {
+  margin-top: 0;
+  color: #34495e; /* Slightly darker blue-gray for headings */
+  border-bottom: 2px solid #3498db; /* Blue accent for heading underline */
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.setup-section > div {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.setup-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="file"], input[type="text"] {
+  width: calc(100% - 22px); /* Account for padding and border */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+input[type="text"] {
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+button {
+  background-color: #3498db; /* Primary button blue */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+button:disabled {
+  background-color: #bdc3c7; /* Gray for disabled buttons */
+  cursor: not-allowed;
+}
+
+.chat-window {
+  height: 350px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.message {
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  line-height: 1.5;
+  position: relative; /* For speaker button positioning */
+}
+
+.message.user {
+  background-color: #eaf2f8; /* Light blue for user messages */
+  margin-left: auto;
+  max-width: 70%;
+  text-align: right;
+}
+
+.message.ai {
+  background-color: #e8f5e9; /* Light green for AI messages */
+  margin-right: auto;
+  max-width: 70%;
+  text-align: left;
+}
+
+.message.system {
+  background-color: #f5f5f5; /* Light gray for system messages */
+  color: #555;
+  font-style: italic;
+  text-align: center;
+  max-width: 100%;
+}
+
+.message strong {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px; /* Add gap between input field and buttons */
+}
+
+.chat-input input[type="text"] {
+  flex-grow: 1; /* Input takes available space */
+  margin-right: 0; /* Remove old margin, using gap now */
+}
+
+.chat-input button {
+  padding: 10px 12px; /* Adjust padding for icon buttons if needed */
+  min-width: 50px; /* Ensure buttons have some minimum width */
+  flex-shrink: 0; /* Prevent buttons from shrinking too much */
+}
+
+.send-icon-button {
+  /* Specific styles for send icon button if needed, e.g., font size for icon */
+  font-size: 1.2em; /* Make icon a bit larger */
+  line-height: 1; /* Adjust line height for better vertical alignment of icon */
+}
+
+.mic-button {
+  background-color: #1abc9c; /* Teal for mic button */
+  /* margin-left: 10px; */ /* Removed, using gap in .chat-input now */
+}
+
+.mic-button:hover {
+  background-color: #16a085;
+}
+
+.mic-button[style*="background-color: red"] { /* For listening state */
+    background-color: #e74c3c !important; /* Important to override default if inline style is used */
+}
+
+.mic-button[style*="background-color: red"]:hover {
+    background-color: #c0392b !important;
+}
+
+.end-interview-btn {
+  background-color: #e74c3c; /* Red for end interview button */
+  display: block;
+  margin: 15px auto 0 auto; /* Center the button */
+}
+
+.end-interview-btn:hover {
+  background-color: #c0392b;
+}
+
+.feedback-section p {
+  text-align: left;
+  white-space: pre-wrap; /* Preserve line breaks from feedback */
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+.speaker-button-container {
+  position: absolute;
+  right: 8px;
+  bottom: 8px; /* Position at the bottom */
+}
+
+.speaker-button {
+  background: none;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+  font-size: 1.2em; /* Larger icon */
+  padding: 2px 5px;
+}
+
+.speaker-button:hover {
+  color: #2980b9;
+  background: none;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 600px) {
+  .App-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .App-header h1 {
+    font-size: 1.5em;
+  }
+  .chat-input {
+    flex-direction: column;
+    gap: 10px;
+  }
+  input[type="text"] {
+    margin-right: 0;
+    width: 100%;
+  }
+  .mic-button, .chat-input button, .send-icon-button {
+    width: 100%;
+    margin-left: 0;
+  }
+  .message.user, .message.ai {
+    max-width: 90%;
+  }
+}
+
+/* Post-interview action buttons */
+.post-interview-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 15px; /* Space between buttons */
+  align-items: center; /* Center buttons */
+}
+
+.view-feedback-btn,
+.start-new-interview-btn {
+  padding: 12px 25px;
+  font-size: 1.1em;
+  min-width: 220px; /* Give them a decent width */
+}
+
+.view-feedback-btn {
+  background-color: #27ae60; /* Green for view feedback */
+}
+.view-feedback-btn:hover {
+  background-color: #229954;
+}
+
+.start-new-interview-btn {
+  background-color: #f39c12; /* Orange for start new */
+}
+.start-new-interview-btn:hover {
+  background-color: #e67e22;
+}
+
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 550px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #34495e;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.admin-password-input {
+  width: calc(100% - 22px); /* Full width minus padding/border */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.submit-password-btn {
+  background-color: #3498db;
+  margin-right: 10px;
+}
+.submit-password-btn:hover {
+  background-color: #2980b9;
+}
+
+.close-modal-btn {
+  background-color: #e74c3c;
+}
+.close-modal-btn:hover {
+  background-color: #c0392b;
+}
+
+.feedback-display-area {
+  margin-top: 15px;
+  background-color: #f9f9f9;
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
