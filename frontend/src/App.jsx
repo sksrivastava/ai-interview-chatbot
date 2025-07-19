@@ -424,7 +424,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Nora AI Interviewer</h1>
+        <h1>AI Interviewer</h1>
         <div className="tts-toggle">
           <label htmlFor="tts-checkbox">Enable AI Voice: </label>
           <input 
