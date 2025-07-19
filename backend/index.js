@@ -20,8 +20,8 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // Initialize Supabase client
-const supabaseUrl = process.env.SUPABASE_URL || 'https://xzrmzlqrpzpffchpcnjp.supabase.co';
-const supabaseKey = process.env.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5cm16bHFycHpwaGZmY2hwdGNuanAiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTcyNjY3MjMwMCwiZXhwIjoyMDM4MjQ4MzAwfQ.0000000000000000000000000000000000000000000000000000000000000000';
+const supabaseUrl = process.env.SUPABASE_URL || 'https://www.example.com';
+const supabaseKey = process.env.SUPABASE_KEY || 'supabase-mock-key';
 if (!supabaseUrl || !supabaseKey) {
   console.error('Supabase URL or Key not found. Please check your .env file.');
   process.exit(1);
